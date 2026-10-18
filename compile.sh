@@ -1,1 +1,1 @@
-gcc src/main.c -lncurses
+gcc src/main.c src/ui.c src/portfolio.c -lncurses
