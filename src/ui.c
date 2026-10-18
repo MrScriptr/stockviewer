@@ -8,7 +8,11 @@ void renderstock(stock *tracking, int y, int x) {
 }
 
 void renderscreener(struct portfolio *tracking) {
+  int stocksperrow = COLS / 6;
+
   for (int i = 0; i < tracking->length; i++) {
-    renderstock(tracking->stocks[i], 3 * i, 1);
+    int col = (i % stocksperrow);
+    int row = (i / stocksperrow);
+    renderstock(tracking->stocks[i], row * 3, col * 6);
   }
 }

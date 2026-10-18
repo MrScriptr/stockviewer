@@ -13,9 +13,12 @@ int main() {
   stocks.stocks = malloc(0);
   stocks.length = 0;
 
-  newstock(&stocks, "AAPL");
-  newstock(&stocks, "AMZN");
-  newstock(&stocks, "NVDA");
+  char viewlist[][6] = {"AAPL", "NVDA", "TSLA", "AVGO", "COST", "AMZN", "META", "MSFT"};
+
+  int len = sizeof(viewlist) / sizeof(viewlist[0]);
+  for (int i = 0; i < len; i++) {
+    newstock(&stocks, viewlist[i]);
+  }
 
   // ncurses init
   initscr();
