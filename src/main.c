@@ -18,13 +18,22 @@ int main() {
   newstock(&stocks, "NVDA");
 
   // ncurses init
-  //initscr();
-  //raw();
-  //curs_set(0);
-  //noecho();
+  initscr();
+  raw();
+  curs_set(0);
+  noecho();
 
-  clear();
+  int ch;
+
   renderscreener(&stocks);
+  while ((ch = getch()) != 'q') {
+    clear();
+    renderscreener(&stocks);
+
+    refresh();
+  }
+
+  endwin();
 
   return 0;
 }

@@ -10,6 +10,8 @@
 void newstock(struct portfolio* tracking, char ticker[]) {
   stock *newstock = malloc(sizeof(stock));
   strcpy(newstock->ticker, ticker);
+  newstock->price = 0;
+  newstock->lastprice = 0;
 
   tracking->length += 1;
   tracking->stocks = realloc(tracking->stocks, sizeof(stock) * tracking->length);
