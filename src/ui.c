@@ -3,8 +3,10 @@
 #include "portfolio.h"
 
 void renderstock(stock *tracking, int y, int x) {
+  attron(COLOR_PAIR(1));
   mvprintw(y, x, "%s", tracking->ticker);
   mvprintw(y + 1, x, "%.2f", tracking->price);
+  attroff(COLOR_PAIR(1));
 }
 
 void renderscreener(struct portfolio *tracking) {
