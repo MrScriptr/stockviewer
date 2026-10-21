@@ -5,7 +5,7 @@
 void renderstock(stock *tracking, int y, int x) {
   attron(COLOR_PAIR(1));
   mvprintw(y, x, "%s", tracking->ticker);
-  mvprintw(y + 1, x, "%.2f", tracking->price);
+  mvprintw(y + 1, x, "%.2f", tracking->price[0]);
   attroff(COLOR_PAIR(1));
 }
 

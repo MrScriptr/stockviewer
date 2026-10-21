@@ -2,8 +2,7 @@
 
 typedef struct {
   char ticker[6];
-  float price;
-  float lastprice;
+  float price[10];
 } stock;
 
 struct portfolio {
