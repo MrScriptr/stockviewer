@@ -5,6 +5,8 @@
 
 #include "portfolio.h"
 
-float getstockprice(stock tracking);
+void closewebsocket();
+void updateprices(struct portfolio *updatelist);
+void initwebsocket();
 
 #endif

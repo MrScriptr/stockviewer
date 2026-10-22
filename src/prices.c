@@ -2,7 +2,20 @@
 #include "portfolio.h"
 #include "prices.h"
 
-float getstockprice(stock tracking) {
+static float getstockprice(stock tracking) {
   return 0.0f;
 }
+
+void closewebsocket() {
+  return;
+}
+
+void updateprices(&portfolio) {
+  return;
+}
+
+void initwebsocket() {
+  return;
+}
+
 
