@@ -21,15 +21,17 @@ int main() {
     newstock(&stocks, viewlist[i]);
   }
   
-  //checking for colors
-  if (initncurses() == -1) {
+  if (initncurses() != 0) {
+    printf("Error initializing ncurses\n");
+    return 1;
+  }
+  if (initwebsocket() != 0) {
+    printf("Error initializing websocket\n");
     return 1;
   }
 
   int ch;
 
-  //initwebsocket();
-  //updateprices(&stocks);
   renderscreener(&stocks);
   while ((ch = getch()) != 'q') {
     clear();
