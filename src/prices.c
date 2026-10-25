@@ -21,8 +21,42 @@ void closewebsocket(CURL *curl) {
   curl_global_cleanup();
 }
 
-void updateprices(struct portfolio *updating) {
-  return;
+int addstock(stock *addingstock) {
+  // format request
+  char req[50];
+  snprintf(req, sizeof(req), "{\"type\":\"subscribe\",\"symbol\":\"%s\"}", addingstock->ticker);
+
+  CURLcode result = CURLE_OK;
+  const char *buf = &req;
+  size_t sent, blen = strlen(send_payload);
+
+  // sending ping
+  while(blen) {
+    result = curl_ws_send(curl, buf, blen, &sent, 0, CURLWS_TEXT);
+
+    if(result == CURLE_OK) {
+      buf += sent;
+      blen -= sent;
+    } else if(result == CURLE_AGAIN) {
+      sleep(1);
+    } else
+      break;
+  }
+
+  if(result == CURLE_OK)
+    return 0;
+}
+
+int updateprices(struct portfolio *updating) {
+  size_t rlen = 0;
+  const struct curl_ws_frame *meta;
+  char buffer[256];
+  CURLcode result = curl_ws_recv(curl, buffer, sizeof(buffer), &rlen, &meta);
+
+  if (result == CURLE_OK) {
+    // updating logic coming soon
+    return 0;
+  }
 }
 
 int initwebsocket(CURL *curl) {
@@ -54,5 +88,4 @@ int initwebsocket(CURL *curl) {
     return 1;
   }
 }
-
 

@@ -25,7 +25,9 @@ int main() {
     printf("Error initializing ncurses\n");
     return 1;
   }
-  if (initwebsocket() != 0) {
+
+  CURL *curl; 
+  if (initwebsocket(curl) != 0) {
     printf("Error initializing websocket\n");
     return 1;
   }
@@ -42,7 +44,7 @@ int main() {
     refresh();
   }
 
-  //closewebsocket();
+  closewebsocket(curl);
   endwin();
 
   return 0;

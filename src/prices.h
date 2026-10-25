@@ -6,8 +6,8 @@
 #include <curl/curl.h>
 #include "portfolio.h"
 
-void closewebsocket();
+void closewebsocket(CURL *curl);
 void updateprices(struct portfolio *updating);
-int initwebsocket();
+int initwebsocket(CURL *curl);
 
 #endif
